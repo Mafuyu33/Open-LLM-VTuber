@@ -48,7 +48,10 @@ class TTSEngine(TTSInterface):
         }
 
         # Send POST request to the TTS API
+        logger.info(f"Sending TTS request to: {self.api_url}")
+        logger.info(f"Request params: {data}")
         response = requests.get(self.api_url, params=data, timeout=120)
+        logger.info(f"Response status: {response.status_code}")
 
         # Check if the request was successful
         if response.status_code == 200:
